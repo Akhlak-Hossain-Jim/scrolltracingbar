@@ -28,6 +28,8 @@ export default function Home() {
       );
   }, []);
 
+  console.log(data);
+
   return (
     <>
       <main>
@@ -39,7 +41,19 @@ export default function Home() {
           {data.map((data) => (
             <Box key={data.avatar_url}>
               <img src={data.avatar_url} alt={`${data.login} avatar`} />
-              <h2>{data.login}</h2>
+              <div className="data">
+                <h2>{data.login}</h2>
+                <p>:github user</p>
+                <p>
+                  <a
+                    href={data.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View github
+                  </a>
+                </p>
+              </div>
             </Box>
           ))}
         </div>
@@ -47,7 +61,7 @@ export default function Home() {
 
       <FooterContainer>
         <p>
-          This Landing Page is created by
+          This demo is created by
           <a
             href="http://akhlak-hossain-jim.github.io/"
             target="_blank"
@@ -55,7 +69,7 @@ export default function Home() {
           >
             Akhlak Hossain Jim
           </a>
-          &nbsp;&copy;&nbsp;{new Date().getFullYear()}
+          &nbsp;&copy;&nbsp;2021 | with github api
         </p>
       </FooterContainer>
     </>
@@ -88,6 +102,9 @@ const Box = styled.div`
     margin: 20px;
     width: 70px;
     border-radius: 50%;
+  }
+  a {
+    color: aqua;
   }
 `;
 
